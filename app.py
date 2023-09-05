@@ -19,8 +19,7 @@ l=[ 'angry',
     'surprised']
 
 #model = load_model("model.h5")
-model_path = os.path.join(os.getcwd(), "emotiondetection
-/model.h5/model.h5")
+model_path = os.path.join(os.getcwd(), "emotiondetection/model.h5/model.h5")
 
 if os.path.exists(model_path):
     model = load_model(model_path)
