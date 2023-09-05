@@ -16,13 +16,6 @@ import pathlib
 from keras.models import load_model
 import matplotlib.image as mpimg
 
-
-import streamlit as st
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.models import load_model
-#from utils import predict_label
-from PIL import Image
-import numpy as np
 st.title("emotion detection")
 
 st.write("Predict the emotion that is being represented in the image.")
@@ -35,11 +28,8 @@ l=[ 'angry',
     'neutral',
     'sad',
     'surprised']
-
-model = load_model("model.h5")
-
 uploaded_file = st.file_uploader(
-    "Upload an image of a emotion :", type="jpeg"
+    "Upload an image of a emotion :", type="png"
 )
 predictions=-1
 if uploaded_file is not None:
