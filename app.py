@@ -53,13 +53,13 @@ def prediction():
     )
     predictions=-1
     if uploaded_file is not None:
-    image1 = Image.open(uploaded_file)
-    image1=image.smart_resize(image1,(112,112))
-    img_array = image.img_to_array(image1)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_array = img_array/255.0
-    predictions = model.predict(img_array)
-    label=l[np.argmax(predictions)]
+       image1 = Image.open(uploaded_file)
+       image1=image.smart_resize(image1,(112,112))
+       img_array = image.img_to_array(image1)
+       img_array = np.expand_dims(img_array, axis=0)
+       img_array = img_array/255.0
+       predictions = model.predict(img_array)
+       label=l[np.argmax(predictions)]
     st.write("### Prediction Result")
     if st.button("Predict"): 
         if uploaded_file is not None:
