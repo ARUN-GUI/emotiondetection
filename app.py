@@ -18,8 +18,13 @@ l=[ 'angry',
     'sad',
     'surprised']
 
-model = load_model("model.h5")
+#model = load_model("model.h5")
+model_path = os.path.join(os.getcwd(), "model.h5")
 
+if os.path.exists(model_path):
+    model = load_model(model_path)
+else:
+    st.write("Model file 'model.h5' not found.")
 uploaded_file = st.file_uploader(
     "Upload an image of a emotion :", type="jpeg"
 )
