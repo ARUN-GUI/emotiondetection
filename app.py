@@ -29,7 +29,7 @@ l=[ 'angry',
     'sad',
     'surprised']
 uploaded_file = st.file_uploader(
-    "Upload an image of a emotion :", type="png"
+    "Upload an image of a emotion :", type="jpeg"
 )
 predictions=-1
 if uploaded_file is not None:
