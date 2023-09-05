@@ -1,4 +1,4 @@
-os
+os==3.5
 streamlit
 protobuf
 tensorflow
