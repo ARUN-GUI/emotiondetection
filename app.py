@@ -4,6 +4,7 @@ from tensorflow.keras.models import load_model
 #from utils import predict_label
 from PIL import Image
 import numpy as np
+import os
 st.title("emotion detection")
 
 st.write("Predict the emotion that is being represented in the image.")
