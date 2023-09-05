@@ -39,7 +39,13 @@ def prediction():
     
     # Define the input fields
     model = load_model("model.h5")
-
+    l=[ 'angry',
+    'disgusted',
+    'fearful',
+    'happy',
+    'neutral',
+    'sad',
+    'surprised']
 
     
     uploaded_file = st.file_uploader(
@@ -47,33 +53,25 @@ def prediction():
     )
     predictions=-1
     if uploaded_file is not None:
-        image1 = Image.open(uploaded_file)
-        image1=image.smart_resize(image1,(112,112))
-        img_array = image.img_to_array(image1)
-        img_array = np.expand_dims(img_array, axis=0)
-        img_array = img_array/255.0
-        predictions = model.predict(img_array)
+    image1 = Image.open(uploaded_file)
+    image1=image.smart_resize(image1,(112,112))
+    img_array = image.img_to_array(image1)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array = img_array/255.0
+    predictions = model.predict(img_array)
+    label=l[np.argmax(predictions)]
     st.write("### Prediction Result")
     if st.button("Predict"): 
-        labels = {
-    'angry':0,
-    'disgusted':1,
-    'fearful':2,
-    'happy':3,
-    'neutral':4,
-    'sad':5,
-    'surprised':6
-}
-        if prediction!=-1:
-            if uploaded_file is not None:
-                image1 = Image.open(uploaded_file)
-                st.image(image1, caption="Uploaded Image", use_column_width=True)
-                st.markdown(
-                    f"<h2 style='text-align: center;'>Image of {labels[np.argmax(predictions)]}</h2>",
-                    unsafe_allow_html=True,
-                )
-            else:
-                st.write("Please upload file or choose sample image.")
+        if uploaded_file is not None:
+        image1 = Image.open(uploaded_file)
+        st.image(image1, caption="Uploaded Image", use_column_width=True)
+        st.markdown(
+            f"<h2 style='text-align: center;'>Image of {label}</h2>",
+            unsafe_allow_html=True,
+        )
+       else:
+           st.write("Please upload file or choose sample image.")
+      
 
 def main():
     st.set_page_config(page_title="Rice Image Classification", page_icon=":heart:")
